@@ -1,0 +1,15 @@
+#To Change from /camel to /books in url
+camel:
+  springboot:
+    name: BooksAPI
+  servlet:
+    mapping:
+      context-path: /*
+  rest:
+    context-path: /
+    
+server:
+  port: 8080
+  
+booksDB:
+  host: ${BOOKS_URL}

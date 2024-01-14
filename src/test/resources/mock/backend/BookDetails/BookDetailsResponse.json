@@ -1,0 +1,38 @@
+{
+    "BookResponseDetails": {
+        "name": "The Great Gatsby",
+        "authorName": "F. Scott Fitzgerald",
+        "publisher": "Publisher XYZ",
+        "price": 250,
+        "genre": "Classic",
+        "language": "English",
+        "pages": 256,
+        "buyLink": {
+            "amazon": "https://www.amazon.com/sample-book",
+            "flipkart": "https://www.flipkart.com/sample-book"
+        }
+    },
+    "AuthorDetails": {
+        "name": "F. Scott Fitzgerald",
+        "yearBorn": 1896,
+        "numberOfBooks": 5,
+        "country": "USA",
+        "moreBooks": [
+            {
+                "bookName": "First Book",
+                "publisher": "XYZ Publications",
+                "genre": "Non-fiction",
+                "language": "English",
+                "pages": 250
+            },
+            {
+                "bookName": "Second Book",
+                "publisher": "ABC Publications",
+                "genre": "Fiction",
+                "language": "Spanish",
+                "pages": 400
+            }
+        ]
+    }
+}
+

@@ -1,0 +1,140 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Book Information API",
+        "version": "1.0.0",
+        "description": "API to submit a book request and retrieve book information and author details."
+    },
+    "servers": [
+        {
+            "url": "https://94dd0060-f5fc-4bc9-a3fd-6202e3289f5d.mock.pstmn.io/Books"
+        }
+    ],
+    "paths": {
+        "/book": {
+            "post": {
+                "summary": "Submit a Book Request",
+                "requestBody": {
+                    "description": "Book Request Data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema" : {
+                                "$ref" : "#/components/schemas/BookRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/BookResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BookRequest" : {
+                "type": "object",
+                "properties": {
+                    "id" : {
+                        "type": "integer"
+                    },
+                    "name" : {
+                        "type": "string"
+                    }
+                }
+            },
+            "BookResponse" : {
+                "type": "object",
+                "properties": {
+                    "BookResponseDetails" : {
+                        "type": "object",
+                        "properties": {
+                            "name" : {
+                                "type": "string"
+                            },
+                            "authorName" : {
+                                "type": "string"
+                            },
+                            "publisher" : {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "integer"
+                            },
+                            "genre" : {
+                                "type": "string"
+                            },
+                            "language" : {
+                                "type": "string"
+                            },
+                            "pages" : {
+                                "type": "integer"
+                            },
+                            "buyLink": {
+                                "type": "object",
+                                "properties": {
+                                    "amazon" : {
+                                        "type": "string"
+                                    },
+                                    "flipkart": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "AuthorDetails" : {
+                        "type": "object",
+                        "properties": {
+                            "name" : {
+                                "type": "string"
+                            },
+                            "yearBorn" : {
+                                "type": "integer"
+                            },
+                            "numberOfBooks" : {
+                                "type": "integer"
+                            },
+                            "country" : {
+                                "type": "string"
+                            },
+                            "moreBooks" : {
+                                "type": "array",
+                                "items" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "bookName" : {
+                                            "type": "string"
+                                        },
+                                        "publisher" : {
+                                            "type": "string"
+                                        },
+                                        "genre" : {
+                                            "type": "string"
+                                        },
+                                        "language" : {
+                                            "type": "string"
+                                        },
+                                        "pages" : {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
