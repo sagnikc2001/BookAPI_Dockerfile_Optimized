@@ -1,13 +1,14 @@
-FROM maven:3.8.4-openjdk-11-slim
-
-EXPOSE 8080
-
-ENV BOOKS_URL=https://94dd0060-f5fc-4bc9-a3fd-6202e3289f5d.mock.pstmn.io
-
+# Stage 1: Build Stage
+FROM maven:3.8.4-openjdk-11 AS build
 WORKDIR /app
-
-COPY . /app
-
+COPY . .
 RUN mvn install
 
-ENTRYPOINT ["java", "-jar", "target/BookAPI.jar"]
+# Stage 2: Runtime Stage
+FROM adoptopenjdk:11-jre-hotspot-bionic
+EXPOSE 8080
+ENV BOOKS_URL=https://94dd0060-f5fc-4bc9-a3fd-6202e3289f5d.mock.pstmn.io
+WORKDIR /app
+COPY --from=build /app/target/BookAPI.jar .
+ENTRYPOINT ["java", "-jar", "BookAPI.jar"]
+
